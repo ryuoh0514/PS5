@@ -48,9 +48,7 @@ int PS5::get_data(bool* p)
         p[R2]=data[7]?true:false;
 
     }
-    sig=0;
-    if(!data[0]&&!data[1]&&!data[6]&&!data[7]&&data[2]==128&&data[3]==128&&data[4]==128&&data[5]==128)sig=1;
-    if(sig)return 0;
+    if(!data[0]&&!data[1]&&!data[6]&&!data[7]&&data[2]==128&&data[3]==128&&data[4]==128&&data[5]==128)return 0;
     else return 1;
 }
 
