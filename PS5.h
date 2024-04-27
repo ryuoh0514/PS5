@@ -41,7 +41,7 @@ public:
         ALL_ANALOG
     };
 
-    PS5(PinName rx,PinName busy,int rate=19200);
+    PS5(PinName rx, int rate=19200);
 
     int get_data(bool* p);
     void get_analog(int* ps5_analog);
