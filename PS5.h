@@ -44,7 +44,7 @@ public:
     PS5(PinName rx,PinName busy,int rate=19200);
 
     int get_data(bool* p);
-    void get_analog(int* analog);
+    void get_analog(int* ps5_analog);
     
 private:
 
@@ -52,6 +52,8 @@ private:
 
     int input[28];
     int data[8];
+    int ORIGIN[8];
+    int j;
 
 };
 
