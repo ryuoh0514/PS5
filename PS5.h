@@ -48,8 +48,6 @@ public:
     
 private:
 
-    DigitalOut _busy;
-
     int input[28];
     int data[8];
     int ORIGIN[8];
