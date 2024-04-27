@@ -52,7 +52,6 @@ private:
 
     int input[28];
     int data[8];
-    int sig;
 
 };
 
