@@ -1,10 +1,16 @@
 #include "mbed.h"
 #include "PS5.h"
 
-PS5::PS5(PinName rx, PinName busy, int rate)
-    : UnbufferedSerial(NC, rx, rate), _busy(busy)
+PS5::PS5(PinName rx, int rate): UnbufferedSerial(NC, rx, rate)
 {
-    _busy=0;
+    ORIGIN[0]=0;
+    ORIGIN[1]=0;
+    ORIGIN[2]=128;
+    ORIGIN[3]=128;
+    ORIGIN[4]=128;
+    ORIGIN[5]=128;
+    ORIGIN[6]=0;
+    ORIGIN[7]=0;
 }
 
 int PS5::get_data(bool* p)
@@ -48,7 +54,11 @@ int PS5::get_data(bool* p)
         p[R2]=data[7]?true:false;
 
     }
-    if(!data[0]&&!data[1]&&!data[6]&&!data[7]&&data[2]==128&&data[3]==128&&data[4]==128&&data[5]==128)return 0;
+    j=0;
+    for(int i=0;i<8;i++){
+        if(data[i]==ORIGIN[i])j++;
+    }
+    if(j==8)return 0;
     else return 1;
 }
 
